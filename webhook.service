@@ -1,0 +1,16 @@
+#sudo nano /etc/systemd/system/webhook.service
+
+[Unit]
+Description=Servidor Webhook para Deploy Automático
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/uvicorn main:app --host 0.0.0.0 --port 8089 --reload
+WorkingDirectory=/caminho/para/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=seu_usuario
+
+[Install]
+WantedBy=multi-user.target
